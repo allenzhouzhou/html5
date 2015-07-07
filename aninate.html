@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Document</title>
+<script type="text/javascript">
+<!--
+	
+var fx = function (ontween, onend, duration) {
+        var pos, runTime,
+                startTime = + new Date,
+                timer = setInterval(function () {
+                        runTime = + new Date - startTime;
+                        pos = runTime / duration;
+
+                        if (pos >= 1) {
+                                clearInterval(timer);
+                                onend(pos);
+                        } else {
+                                ontween(pos);
+                        };
+                }, 13);
+};
+//-->
+</script>
+ </head>
+ <body>
+  
+<div id="fx" style="width:150px;height:150px;background:#36C;"></div>
+
+<script>
+// DEMO
+document.getElementById('fx').onclick = function () {
+        var from = 150; // 开始值
+        var to = 500; // 目标值
+        var elemStyle = this.style;
+        function ontween (pos) {
+                elemStyle.height = from + (to - from) * pos + 'px';
+        };
+        function onend (pos) {
+                ontween(pos);
+        };
+        fx(ontween, onend, 400);
+};
+</script>
+ </body>
+</html>

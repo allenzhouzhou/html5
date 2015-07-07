@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Document</title>
+  <script type="text/javascript">
+  	var slider={ 
+  		touch:'ontouchstart' in window ||window.DocumentTouch && document instanceof DocumentTouch,
+  		slider:document.getElementById('slider'),
+  		events:{ 
+  			slider:this.slider,
+  			handleEvent:function(event){ 
+  				var self=this;
+  				if(event.type=='touchstart'){ 
+  					self.start(event);
+  				}else if(event.type=='touchmove'){ 
+  					self.move(event);
+  				}else if(event.type=='touchend'){ 
+  					self.end(event);
+  				}
+  			}
+  		},
+  		start:function(event){ 
+  			event.preventDefault();
+  			var touch=event.targetTouches[0];
+  			startPos={x:touch.clientX,y:touch.clientY};
+  			sliderX=parseInt(this.slider.style.left);
+  			sliderY=parseInt(this.slider.style.top);
+  			this.slider.addEventListener('touchmove',this,false);
+  			this.slider.addEventListener('touchend',this,false);
+
+  		},
+  		move:function(event){ 
+  			if(event.targetTouches.length>1||event.scale&&event.scale!==1) return;
+  			var touch=event.targetTouches[0];
+  			endPos={x:touch.clientX-startPos.x,y:touch.clientY-startPos.y};
+  			event.preventDefault();
+  			this.slider.style.left=(sliderX+endPos.x)+"px";
+  			this.slider.style.top=(sliderY+endPos.y)+"px";
+  		},
+  		end:function(event){ 
+  			this.slider.removeEventListener('touchmove',this,false);
+  			this.slider.removeEventListener('touchend',this,false);
+  		},
+  		init:function(){ 
+  			var self=this;
+  			if(!!self.touch) self.slider.addEventListener('touchstart',self.events,false);
+  		}
+
+
+  	}
+  	slider.init();
+
+  	(function(){ 
+  		$.fn.dragDiv=function(divWrap){ 
+  			return this.each(function(){ 
+  				var $divmove;
+  				var mx=my=0;=$(this),
+  				divwrap=divWrap?$divemove.parents[divWrap]:divmove;
+  				var mx=0,my=0,dx=0,dy=0,isDown=false;
+  				if(document.attachEvent){ 
+  					$divmove[0].attachEvent('onselectstart',function(){ 
+  						return false;
+  					})
+  				}
+  				$divMove.mousedown(function(event){ 
+  					var event=event||window.event;
+  					mx=event.clientX;
+  					my=event.clientY;
+  					dx=divwrap.offset().left;
+  					dy=divwrap.offset().top;
+  					isDown=true;
+  				});
+  				$divMove.mousemove(function(event){ 
+  					var event=event||window.event;
+  					var x=event.clientX,y=event.clientY;
+  					if(isDown){ 
+  						divwrap.css({"left":x-mx+dx,"top":y-my+dy});
+  					}
+  				})
+  				$divMove.mouseup(function() {
+                   isDown = false;//鼠标拖拽结束
+                }
+            });
+
+
+
+  			})
+  		}
+
+  		function move(obj,attr,speed,target,endfn){ 
+  			clearInterval(obj.timer);
+  			speed=parseInt(getStyle(obj,attr))<target?speed:-speed;
+  			obj.timer=setInterval(function{ 
+  				var curPostion=parseIntget(getStyle(obj,attr))+speed;
+  				if(curPostion>target&&speed>0)
+  			},50)
+  		}
+  	})
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

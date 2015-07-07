@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Document</title>
+  <script type="text/javascript">
+window.onload = function (){
+  
+      var oC = document.getElementById('canvas1');
+  
+      var oCtx = oC.getContext('2d');
+      var x = 0;    //圆心x
+      var y = 0;    //圆心y
+     var r = 0;    //圆心r
+      initialize();
+     setInterval(DrawUpdate,1000);
+  
+      function initialize(){
+          
+         x = 200;    //圆心x
+          y = 200;    //圆心y
+         r = 150;    //圆心r
+         oCtx.strokeStyle = '#1ec1e4';
+         oCtx.fillStyle = '#333';
+ 
+         //画秒刻度
+         for(var i=0; i<60; i++){
+              oCtx.beginPath();
+             oCtx.moveTo(x, y);
+              oCtx.arc(x, y, r, i*6*Math.PI/180, (i+1)*6*Math.PI/180);
+             oCtx.stroke();    
+        }
+         oCtx.closePath();
+		 }
+		 }
+		 </script>
+		 </head>
+		 <body>
+		    <canvas id="canvas1" width="480" height="420"></canvas>
+		 </body>
+		 </html>

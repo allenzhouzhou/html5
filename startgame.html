@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Document</title>
+  <script type="text/javascript">
+  	var c=document.getElementById("mycanvas"),time=160,x=8,y=8,t=20,map=[],size=8,direction=2,
+  	ctx=c.getContext('2d');
+  	interval=setInterval(set_game_speed,time);
+  	function set_game_speed(){ 
+  		switch(direction){ 
+  			case 1:y=y-size;break;
+  			case 2:y=x+size;break;
+  			case 0:y=x-size;break;
+  			case 3:y=y+size;break;
+  		}
+  		if(x>400||y>400||x<0||y<0){ 
+  			 alert('挂了')；
+  		}
+  		for(var i=0,len=map.length;i<len;i++){ 
+  			 if(parseInt(map[i].x)==x&&parseInt(map[i].y)==y){ 
+  			 	 alert('撞到自己了');
+  			 }
+  		}
+  		if(map.length>t){ 
+  			var cl=map.shift();
+  			cxt.clearRect(cl['x'],cl['y'],size,size);
+  		}
+  		map.push({'x':x,'y':y});
+  		cxt.fillStyle="#069";
+  		cxt.strokeStyle="#069";
+  		cxt.fillRect(x,y,size,size);
+  	}
+
+  </script>
+ </head>
+ <body>
+  
+  <canvas id="mycanvas" width="400px" height="400px" style="border:1px solid #c3c3c3;"></canvas>
+ </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Document</title>
+  <style type="text/css">
+     #canvas{ 
+     	width:800px;
+     	height:600px;
+     }
+  </style>
+  <script type="text/javascript">
+      function draw21(){ 
+      	var canvas=document.getElementById("canvas");
+      	var content=canvas.getContext('2d');
+      	
+    //  	content.fillRect(0,0,100,100);
+      //	content.fillStyle="red";
+      	content.strokeStyle="rgba(255,0,0,0.1)";
+      	content.lineWidth="1px";
+      	//content.fillRect(0,0,100,100);
+      	content.strokeRect(0, 0, 100, 100);
+      }
+
+      function draw0(){ 
+      	
+      }
+      window.onload=function(){ 
+      	draw21();
+      }
+  </script>
+ </head>
+ <body>
+  <canvas id="canvas"></canvas>
+ </body>
+</html>

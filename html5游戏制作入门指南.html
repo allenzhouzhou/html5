@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Document</title>
+  <script type="text/javascript">
+  var CANVAS_WIDTH=480,
+  CANVAS_HEIGHT=320,
+  canvasElement=$("<canvas width='"+CANVAS_WIDTH+"' height='"+CANVAS_HEIGHT+"' ></canvas>");
+  var canvas=canvasElement.get(0).getContext("2d");
+  canvasElement.appendTo('body');
+
+  var FPS=30,textX=50,textY=50;
+  $(function(){ 
+  	setInterval(function(){ 
+	  	update();
+	  	draw();
+  	},1000/FPS);
+
+  })
+
+  var player={ 
+  	color:"#00A",
+  	x:200,
+  	y:270,
+  	width:32,
+  	height:32,
+  	draw:function(){ 
+  		canvas.fillStyle=this.color;
+  		canvas.fillRect(this.x,this.y,this.width,this.height);
+  	}
+  }
+  function draw(){ 
+  	canvas.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+  	player.draw();
+  }
+
+  function update(){ 
+  	if(keydown.space){ 
+  		player.shoot();
+  	}
+  	if(keydown.left) { 
+  		player.x-=5;  		
+  	}
+  	if(keydown.right){ 
+  		player.x+=5;
+  	}
+  	player.x=player.x.clamp(0,CANVAS_WIDTH-player.width);
+  }
+  
+
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>
